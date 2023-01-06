@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "825827734055",
+    "project_id": "x-enterprise-demo",
+    "storage_bucket": "x-enterprise-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825827734055:android:e8814bd8a6d5e22aed1402",
+        "android_client_info": {
+          "package_name": "com.nohakcoffeeofficial.xenterprisekotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825827734055-au1s59npcq28si0l07vsvte7kfnluqqf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwhWtM9M8KBrpCCFMhBSZLrjjRbdMDdEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825827734055-au1s59npcq28si0l07vsvte7kfnluqqf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
