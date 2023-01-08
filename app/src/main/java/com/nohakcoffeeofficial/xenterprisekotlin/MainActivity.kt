@@ -1,37 +1,62 @@
 package com.nohakcoffeeofficial.xenterprisekotlin
-
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
-import com.google.firebase.firestore.FirebaseFirestore
+// import android.util.Log
+import android.view.View
+import android.view.WindowManager
+import android.webkit.JavascriptInterface
+import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
+// import com.google.firebase.firestore.FirebaseFirestore
 import com.nohakcoffeeofficial.xenterprisekotlin.databinding.ActivityMainBinding
+import java.util.*
 
-const val TAG = "FIRESTORE"
+// Debugging tag
+const val TAG = "TAG"
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
-
     // Activity binding makes possible to use functionality easier
-    private var binding : ActivityMainBinding? = null
+    private var app : ActivityMainBinding? = null
 
-    // Database connection
-    val fireStoreDatabase = FirebaseFirestore.getInstance()
+    // Class to reference webview object context and methods
+    class WebAppInterface internal constructor(c: Context) {
+        var mContext: Context
 
+        /** Instantiate the interface and set the context  */
+        init {
+            mContext = c
+        }
+
+        @JavascriptInterface
+        fun sayHello(msg: String?) {
+
+        }
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         // Main setup
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        // Bind the keyword 'app' to the layout
+        app = ActivityMainBinding.inflate(layoutInflater)
 
-        // Calling a custom model
-        fireStoreDatabase.collection("users")
-            .get()
-            .addOnCompleteListener{
-                val result: StringBuffer = StringBuffer()
-                if (it.isSuccessful) {
-                    for (document in it.result!!)
-                        result.append(document.data.getValue("firstName")).append(" ")
-                              .append(document.data.getValue("lastName")).append("\n")
-                }
-                binding?.userDataTest?.text = result
-            }
+
+        // Webview code
+        val webview = app?.webview as WebView
+        webview.addJavascriptInterface(WebAppInterface(this), "Android") //Webview keyword access
+        webview.loadUrl("file:///android_asset/web/index.html")
+
+        val webSettings = webview.settings
+        webSettings.javaScriptEnabled = true
+
+        // Fullscreen setup
+        val decorView: View = window.decorView
+        Objects.requireNonNull(supportActionBar)?.hide();
+        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(app?.root)
     }
 }

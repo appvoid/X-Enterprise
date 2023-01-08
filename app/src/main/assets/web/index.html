@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.35, maximum-scale=1.35, user-scalable=1.35" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+</head>
+<body onload="main()"> <!--wait till the libraries get loaded   -->
+<h3 id="title">Accounts</h3><span id="add">Add</span>
+  <input id="searchbar" onkeyup="search()" placeholder="Search..." class="prompt">
+  <div id="list-container"></div>
+  <div class="editor"></div>
+  <script>
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    const firebaseConfig = {
+      apiKey: "AIzaSyBszZyr_fdFfeA7IdtvuokLiExhPMRWILw",
+      authDomain: "webxenterprise.firebaseapp.com",
+      projectId: "webxenterprise",
+      storageBucket: "webxenterprise.appspot.com",
+      messagingSenderId: "65674078393",
+      appId: "1:65674078393:web:9f02d6a96d400934e69368"
+    };
+  </script>
+  <script src="./functions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
