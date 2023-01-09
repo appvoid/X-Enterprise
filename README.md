@@ -4,4 +4,5 @@ Demo Android App for X Enterprise. The app can store, retreive and delete inform
 ### Usage
 Install the "demo.apk" or run the project in Android Studio
 
+### Screenshot
 ![](https://raw.githubusercontent.com/appvoid/X-Enterprise/master/app/src/main/assets/2.png)
